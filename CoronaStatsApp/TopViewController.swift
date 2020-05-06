@@ -29,7 +29,6 @@ class TopViewController: UIViewController {
         }
     }
     
-    
     let headers: HTTPHeaders = [
         "x-rapidapi-host": "covid-19-data.p.rapidapi.com",
         "x-rapidapi-key": "ed5e14c062mshf4d69135b0e0b64p1d0baejsn1cfd8d7d62ea"
@@ -44,8 +43,7 @@ class TopViewController: UIViewController {
         container3.layer.cornerRadius = 10
         container4.layer.cornerRadius = 10
         navigationItem.title = "新型コロナ感染者の統計"
-//        self.countryData.sorted(by: { $0.0 > $1.0 })
-
+        
         getCurrentTotal()
         getAllCountries()
     }
@@ -80,7 +78,7 @@ class TopViewController: UIViewController {
             
             let result = response.value
             if result != nil {
-                let dict = result as! [Dictionary<String, Any>]
+                let dict = result as! [Dictionary<String, Any>] 
                 DispatchQueue.main.async {
                     self.countryData = dict
                 }
@@ -114,7 +112,7 @@ extension TopViewController: UITableViewDelegate,UITableViewDataSource {
         confirmed.text = (data["confirmed"] as! Int).formatNumber()
         deaths.text = (data["deaths"] as! Int).formatNumber()
         recovered.text = (data["recovered"] as! Int).formatNumber()
-
+        
         return cell
     }
     
